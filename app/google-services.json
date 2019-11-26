@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "145871141336",
+    "firebase_url": "https://myfotobook-da05a.firebaseio.com",
+    "project_id": "myfotobook-da05a",
+    "storage_bucket": "myfotobook-da05a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145871141336:android:f6e617e527bd7818e19aad",
+        "android_client_info": {
+          "package_name": "com.example.myfotobook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "145871141336-9cfequpplm04cvk7cfdke4ucghabliu0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myfotobook",
+            "certificate_hash": "ab98ae9bf3fa9e94f0d7d0f9d7300e983c81ffa9"
+          }
+        },
+        {
+          "client_id": "145871141336-uj96p9mq1ci9lda0mrr501sa17v1s5vg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUowdcTU7MbDnZJsT5KkIZVy-aYd2KhkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "145871141336-uj96p9mq1ci9lda0mrr501sa17v1s5vg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
