@@ -12,18 +12,23 @@ import java.util.Locale;
 
 public class Album implements Serializable {
 
-    private String idAlbum, chaveFoto, nomeFoto, descricaoFoto;
+    private String idAlbum;
+    private String chaveFoto;
+    private String nomeFoto;
+    private String descricaoFoto;
+    private String idUser;
     private String criadoEm;
     //private Calendar cal =  Calendar.getInstance();
 
     public Album() {}
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public Album(String idAlbum, String chaveFoto, String nomeFoto, String descricaoFoto) {
+    public Album(String idAlbum, String chaveFoto, String nomeFoto, String descricaoFoto, String idUser) {
         this.idAlbum = idAlbum;
         this.chaveFoto = chaveFoto;
         this.nomeFoto = nomeFoto;
         this.descricaoFoto = descricaoFoto;
+        this.idUser = idUser;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             this.criadoEm =
                     DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, Locale.FRANCE).format(Calendar.getInstance().getTime());
@@ -68,5 +73,13 @@ public class Album implements Serializable {
 
     public void setCriadoEm(String criadoEm) {
         this.criadoEm = criadoEm;
+    }
+
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 }

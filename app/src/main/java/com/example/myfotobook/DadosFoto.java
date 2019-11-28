@@ -12,8 +12,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -31,6 +39,8 @@ public class DadosFoto extends AppCompatActivity {
     private EditText nomeFoto;
     private EditText descricaoFoto;
     private Album album;
+
+    public static String login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,9 +89,11 @@ public class DadosFoto extends AppCompatActivity {
         // envio do arquivo para o storage
         UploadTask uploadTask = mStorageRef.child(uniqueID + ".JPEG").putBytes(arquivo);
 
-        album = new Album("0", uniqueID, nomeFoto.getText().toString(), descricaoFoto.getText().toString());
+        String idUser = login;
+
+        album = new Album("0", uniqueID, nomeFoto.getText().toString(), descricaoFoto.getText().toString(), idUser );
         //salvamento dados no bd do firebase
-        mDatabase.child("Fotos").push().setValue(album);
+        mDatabase.child("Fotos" + idUser).push().setValue(album);
 
         // verifica se foi para o storage
         uploadTask.addOnFailureListener(new OnFailureListener() {

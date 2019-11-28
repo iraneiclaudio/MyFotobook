@@ -1,0 +1,4 @@
+#Thu Nov 28 01:19:30 BRST 2019
+base.0=C\:\\GitHub\\MyFotobook\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

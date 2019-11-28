@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         GoogleSignInAccount alreadyloggedAccount = GoogleSignIn.getLastSignedInAccount(this);
         if (alreadyloggedAccount != null) {
-            Toast.makeText(this, "Já está logado!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Bem vindo!", Toast.LENGTH_SHORT).show();
             onLoggedIn(alreadyloggedAccount);
         } else {
             Log.d(TAG, "Não está logado!");

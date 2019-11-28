@@ -34,10 +34,11 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity {
 
     public static final String GOOGLE_ACCOUNT = "google_account";
-    private TextView profileName, profileEmail;
+    public TextView profileName, profileEmail;
     private ImageView profileImage;
     private GoogleSignInClient mgoogleSignInClient;
     private Button signOut;
+    private String idUser;
 
 // Reclclerview
     RecyclerView recyclerView;
@@ -71,6 +72,8 @@ public class HomeActivity extends AppCompatActivity {
         profileName.setText(googleSignInAccount.getDisplayName());
         profileEmail.setText(googleSignInAccount.getEmail());
 
+        idUser = googleSignInAccount.getId();
+
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,7 +99,7 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         ListFotos = new ArrayList<Album>();
 
-        final DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("Fotos");
+        final DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("Fotos" + idUser); // idUser do email
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -132,7 +135,7 @@ public class HomeActivity extends AppCompatActivity {
                 int a = 0;
                 for (Album item : ListFotos){
                     if (a == viewHolder.getAdapterPosition()){
-                        adapter.deletItem(item.getidAlbum(), item.getChaveFoto());
+                        adapter.deletItem(idUser +"/"+ item.getidAlbum(), item.getChaveFoto());
                     }
                     a++;
                 }
@@ -145,6 +148,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void criarFoto(View view) {
+        DadosFoto.login = idUser; // idUser
         Intent dadosFoto = new Intent(this, DadosFoto.class);
         startActivity(dadosFoto);
     }

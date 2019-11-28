@@ -35,12 +35,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
         public TextView descricao;
         public TextView criadoEm;
         public String idAlbum;
+        public String idUser;
 
 
         public MyViewHolder(View v) {
             super(v);
             image = v.findViewById(R.id.recycleView_image);
             idAlbum = null;
+            idUser = null;
             chave = v.findViewById(R.id.recycleViewChave);
             nome = v.findViewById(R.id.recycleView_NomeFoto);
             descricao = v.findViewById(R.id.recycleView_DescricaoFoto);
@@ -75,6 +77,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
         holder.nome.setText(Albuns.get(position).getNomeFoto());
         holder.descricao.setText(Albuns.get(position).getDescricaoFoto());
         holder.criadoEm.setText(Albuns.get(position).getCriadoEm());
+        holder.idUser = (Albuns.get(position).getIdUser());
 
         StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
         StorageReference pathReference = mStorageRef.child(holder.chave.getText()+ ".JPEG");
@@ -99,7 +102,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
 
     public void deletItem(String chDB, String chSR){
 
-        DatabaseReference drBD = FirebaseDatabase.getInstance().getReference().child("Fotos/"+ chDB);
+        DatabaseReference drBD = FirebaseDatabase.getInstance().getReference().child("Fotos" + chDB);
         drBD.removeValue();
 
         StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
